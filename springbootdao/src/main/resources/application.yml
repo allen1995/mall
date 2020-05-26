@@ -6,7 +6,16 @@ spring:
         url: jdbc:mysql://172.16.15.105:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
         username: root
         password: root
+
+    rabbitmq:
+        host: 172.16.15.105
+        port: 5672
+        virtual-host: /
+        username: allen
+        password: allen
+
 mybatis:
     mapper-locations:
         - classpath:mapper/*.xml
         - classpath*:com/**/mapper/*.xml
+

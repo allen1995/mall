@@ -13,10 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * 品牌管理Controller
- * Created by macro on 2019/4/19.
- */
+
 @Controller
 @RequestMapping("/brand")
 public class PmsBrandController {
