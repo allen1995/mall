@@ -1,0 +1,10 @@
+server.port=8080
+server.error.path=/error
+server.servlet.session.timeout=30m
+server.servlet.context-path=/chapter02
+server.tomcat.uri-encoding=UTF-8
+server.tomcat.max-threads=500
+server.tomcat.basedir=E:\\code\\mall\\springbootbase\\tmp
+server.ssl.key-store= allen.p12
+server.ssl.key-alias= tomcathttps
+server.ssl.key-store-password= 123456
