@@ -9,7 +9,10 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 /**
  * @Auther: allen
@@ -17,29 +20,19 @@ import org.springframework.context.annotation.Configuration;
  * @Description:
  */
 @Configuration
+@EnableWebMvc
+@ComponentScan( basePackages = "com.allen.springbootdao")
 public class RabbitMqConfig {
 
-    @Value("${spring.rabbitmq.username}")
-    private String username;
-
-    @Value("${spring.rabbitmq.password}")
-    private String password;
-
-    @Value("${spring.rabbitmq.host}")
-    private String host;
-
-    @Value("${spring.rabbitmq.port}")
-    private int port;
 
     @Bean
     public CachingConnectionFactory factory(){
         CachingConnectionFactory factory = new CachingConnectionFactory();
-        System.out.printf("======================> username: %s,password: %s \n\n\n",username,password);
-        factory.setUsername (username);
-        factory.setPassword(password);
-        factory.setHost(host);
+        factory.setUsername ("allen");
+        factory.setPassword("allen");
+        factory.setHost("172.16.15.105");
         factory.setVirtualHost("/");
-        factory.setPort(port);
+        factory.setPort(5672);
         return factory;
     }
 
@@ -47,8 +40,8 @@ public class RabbitMqConfig {
     public RabbitTemplate rabbitTemplate(CachingConnectionFactory factory){
 
         RabbitTemplate template = new RabbitTemplate(factory);
-        template.setExchange("mailExchange");
-        template.setRoutingKey("mail.test");
+        //template.setExchange("mailExchange");
+        //template.setRoutingKey("mail.test");
         template.setMessageConverter(jsonMessageConverter());
         return template;
 
@@ -70,7 +63,7 @@ public class RabbitMqConfig {
         return BindingBuilder
                 .bind(mailQueue())
                 .to(mailExchange())
-                .with("mail.*");
+                .with("shopping.*");
     }
 
     @Bean

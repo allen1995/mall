@@ -23,4 +23,9 @@ public class UserServiceTests {
     public void testUserRegistry(){
         userService.userRegistry();
     }
+
+    @Test
+    public void testStomp(){
+        userService.stomp();
+    }
 }

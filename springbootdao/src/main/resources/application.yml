@@ -6,6 +6,7 @@ spring:
         url: jdbc:mysql://172.16.15.105:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
         username: root
         password: root
+        driver-class-name: com.mysql.jdbc.Driver
 
     rabbitmq:
         host: 172.16.15.105

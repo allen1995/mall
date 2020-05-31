@@ -31,4 +31,10 @@ public class UserService {
         mail.setContent("注册成功");
         rabbitTemplate.convertAndSend("mailExchange" ,"mail.test", mail);
     }
+
+    public void stomp(){
+        String message = "<a href=\"https://www.baidu.com\" target=\"_black\">微醺好时光，美酒三件七折</a>";
+
+        rabbitTemplate.convertAndSend("mailExchange","shopping.discount", message.getBytes());
+    }
 }
