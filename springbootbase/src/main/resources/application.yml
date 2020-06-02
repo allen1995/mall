@@ -21,3 +21,15 @@ my:
   favorites:
     - 跑步
     - 唱歌
+
+
+spring:
+  thymeleaf:
+    cache: true
+    check-template: true
+    check-template-location: true
+    encoding: UTF-8
+    prefix: classpath:/templates/
+    servlet:
+      content-type: text/html
+    suffix: .html
