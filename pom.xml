@@ -11,6 +11,7 @@
 	<modules>
 		<module>springbootbase</module>
 		<module>springbootdao</module>
+		<module>springbootfreemarker</module>
 	</modules>
 
 	<properties>
