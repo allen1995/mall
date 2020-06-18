@@ -13,6 +13,8 @@
 		<module>springbootdao</module>
 		<module>springbootfreemarker</module>
 		<module>springbootweb</module>
+		<module>crossorigindemo</module>
+		<module>springbootredis</module>
 	</modules>
 
 	<properties>

@@ -2,8 +2,7 @@ package com.allen.springbootweb.controller;
 
 import com.allen.springbootweb.dto.Book;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 
@@ -15,14 +14,27 @@ import java.time.LocalDate;
 @Controller
 public class BookController {
 
-    @RequestMapping("/book")
+    @PostMapping("/book")
     @ResponseBody
-    public Book book(){
-        Book book = new Book();
-        book.setName("三国演义");
-        book.setAuthor("罗贯中");
-        book.setPrice(45f);
-        book.setDate(LocalDate.now());
-        return book;
+    public String book(){
+        //Book book = new Book();
+        //book.setName("三国演义");
+        //book.setAuthor("罗贯中");
+        //book.setPrice(45f);
+        //book.setDate(LocalDate.now());
+        return "receive:三国演义";
+    }
+
+    @DeleteMapping("/book/{id}")
+    @ResponseBody
+    public String deleteBook(@PathVariable Long id){
+        return String.valueOf(id);
+    }
+
+    @GetMapping("/hello")
+    @ResponseBody
+    public String hello(){
+        int i = 2/0;
+        return "hello,world";
     }
 }

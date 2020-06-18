@@ -22,7 +22,7 @@ public class FileUploadController {
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
     @PostMapping("upload")
-    public String upload(@RequestParam("uploadFile") MultipartFile uploadFile, HttpServletRequest req){
+    public String upload(@RequestParam("uploadFile") MultipartFile uploadFile, HttpServletRequest req) throws IOException {
         String realPath = req.getSession().getServletContext().getRealPath("/");
         String format = sdf.format(new Date());
         File folder = new File(realPath + "uploadFile/" + format);
@@ -33,15 +33,10 @@ public class FileUploadController {
         String oldName = uploadFile.getOriginalFilename();
         String newName = UUID.randomUUID().toString() + oldName.substring(oldName.lastIndexOf("."));
 
-        try {
-            uploadFile.transferTo(new File(folder,newName));
-            String filePath = req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort() +
+        uploadFile.transferTo(new File(folder,newName));
+        String filePath = req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort() +
                     "/static/uploadFile/" + format+ "/" + newName;
-            return filePath;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        return filePath;
 
-        return "上传失败";
     }
 }
