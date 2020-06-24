@@ -1,10 +1,7 @@
 package com.allen.springbootweb.controller;
 
-import com.allen.springbootweb.dto.Book;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDate;
 
 /**
  * @Auther: allen
@@ -34,7 +31,7 @@ public class BookController {
     @GetMapping("/hello")
     @ResponseBody
     public String hello(){
-        int i = 2/0;
+        //int i = 2/0;
         return "hello,world";
     }
 }

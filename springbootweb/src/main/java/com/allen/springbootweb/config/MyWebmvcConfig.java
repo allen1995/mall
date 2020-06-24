@@ -1,9 +1,8 @@
 package com.allen.springbootweb.config;
 
+import com.allen.springbootweb.common.MyInterceptor1;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.*;
 
 /**
  * @Auther: allen
@@ -29,5 +28,18 @@ public class MyWebmvcConfig implements WebMvcConfigurer {
                 .maxAge(1800)
                 .allowedOrigins("http://localhost:8081");
 
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new MyInterceptor1())
+                .addPathPatterns("/**")
+                .excludePathPatterns("/hello");
+
+    }
+
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/login").setViewName("login");
     }
 }
