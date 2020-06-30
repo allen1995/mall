@@ -15,6 +15,9 @@
 		<module>springbootweb</module>
 		<module>crossorigindemo</module>
 		<module>springbootredis</module>
+		<module>springbootjdbctemplate</module>
+        <module>springbootmybatis</module>
+		<module>springbootjpa</module>
 	</modules>
 
 	<properties>
