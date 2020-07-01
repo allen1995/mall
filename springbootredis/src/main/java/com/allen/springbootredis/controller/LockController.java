@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -22,13 +23,13 @@ public class LockController {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
-    @Autowired
+    @Resource(name = "lockscript")
     private DefaultRedisScript defaultRedisScript;
 
     @GetMapping("/lua")
-    public ResponseEntity lua(){
-        List<String> keys = new ArrayList<>(Arrays.asList("testlua","hello lua"));
-        Boolean result = (Boolean) stringRedisTemplate.execute(defaultRedisScript, keys, "100");
+    public ResponseEntity lua(String requestId){
+        List<String> keys = new ArrayList<>(Arrays.asList("order_lock"));
+        Boolean result = (Boolean) stringRedisTemplate.execute(defaultRedisScript, keys, "10010",requestId);
         return ResponseEntity.ok(result);
     }
 }

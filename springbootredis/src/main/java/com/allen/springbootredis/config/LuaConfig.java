@@ -14,10 +14,19 @@ import org.springframework.scripting.support.ResourceScriptSource;
 @Configuration
 public class LuaConfig {
 
-    @Bean
+    @Bean(name = "lockscript")
     public DefaultRedisScript<Boolean> distributedlockScript(){
         DefaultRedisScript<Boolean> defaultRedisScript = new DefaultRedisScript<>();
         defaultRedisScript.setScriptSource(new ResourceScriptSource(new ClassPathResource("static/script/distributedlock.lua")));
+        defaultRedisScript.setResultType(Boolean.class);
+
+        return defaultRedisScript;
+    }
+
+    @Bean("unlockscript")
+    public DefaultRedisScript<Boolean> distributedunlockScript(){
+        DefaultRedisScript<Boolean> defaultRedisScript = new DefaultRedisScript<>();
+        defaultRedisScript.setScriptSource(new ResourceScriptSource(new ClassPathResource("static/script/distrubutedunlock.lua")));
         defaultRedisScript.setResultType(Boolean.class);
 
         return defaultRedisScript;
