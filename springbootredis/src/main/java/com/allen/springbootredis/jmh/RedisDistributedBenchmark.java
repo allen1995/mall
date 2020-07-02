@@ -3,7 +3,6 @@ package com.allen.springbootredis.jmh;
 import com.allen.springbootredis.SpringbootredisApplication;
 import com.allen.springbootredis.distributedlock.DistributedLock;
 import com.allen.springbootredis.distributedlock.LockTest;
-import org.openjdk.jmh.Main;
 import org.openjdk.jmh.annotations.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;

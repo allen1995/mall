@@ -1,6 +1,7 @@
-package com.allen.springbootmybatis.dao;
+package com.allen.springbootmybatis.mapper2;
 
 import com.allen.springbootmybatis.entity.Book;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -11,7 +12,8 @@ import java.util.List;
  * @author makejava
  * @since 2020-06-30 14:50:36
  */
-public interface BookDao {
+@Mapper
+public interface BookMapper2 {
 
     /**
      * 通过ID查询单条数据
