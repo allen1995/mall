@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.allen.springbootmybatis.sourceanalysis">
+
+    <resultMap id="BaseResultMap" type="com.allen.springbootmybatis.entity.Book">
+        <!--@Table book-->
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="author" column="author" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="selectBook" resultMap="BaseResultMap" parameterType="long">
+      select * from book where id = #{id}
+  </select>
+</mapper>
