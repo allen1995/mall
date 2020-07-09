@@ -5,7 +5,7 @@
     <resultMap id="BaseResultMap" type="com.allen.springbootmybatis.entity.Book">
         <!--@Table book-->
         <result property="id" column="id" jdbcType="INTEGER"/>
-        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR" typeHandler="com.allen.springbootmybatis.util.MyTypeHandler"/>
         <result property="author" column="author" jdbcType="VARCHAR"/>
     </resultMap>
 

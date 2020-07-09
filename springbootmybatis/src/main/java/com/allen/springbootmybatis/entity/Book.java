@@ -14,9 +14,20 @@ public class Book implements Serializable {
     private Integer id;
     
     private String name;
+
+    private String aliaseName;
     
     private String author;
 
+    public Book() {
+    }
+
+    public Book(Integer id, String name, String aliaseName, String author) {
+        this.id = id;
+        this.name = name;
+        this.aliaseName = aliaseName;
+        this.author = author;
+    }
 
     public Integer getId() {
         return id;
@@ -42,11 +53,20 @@ public class Book implements Serializable {
         this.author = author;
     }
 
+    public String getAliaseName() {
+        return aliaseName;
+    }
+
+    public void setAliaseName(String aliaseName) {
+        this.aliaseName = aliaseName;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", aliaseName='" + aliaseName + '\'' +
                 ", author='" + author + '\'' +
                 '}';
     }
