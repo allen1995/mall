@@ -22,6 +22,11 @@ public class Book implements Serializable {
     public Book() {
     }
 
+    public Book(String name, String author) {
+        this.name = name;
+        this.author = author;
+    }
+
     public Book(Integer id, String name, String aliaseName, String author) {
         this.id = id;
         this.name = name;

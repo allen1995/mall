@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * (Book)表数据库访问层
@@ -64,5 +65,11 @@ public interface BookMapper1 {
      * @return 影响行数
      */
     int deleteById(Integer id);
+
+    int batchInsert(List<Book> books);
+
+    List<Book> queryByIds(String[] ids);
+
+    List<Book> queryByMap(@Param("map") Map<String,String> map);
 
 }

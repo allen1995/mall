@@ -9,7 +9,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.function.BinaryOperator;
 
 /**
  * (Book)表控制层
@@ -59,9 +63,43 @@ public class BookController {
         return book;
     }
 
+    @GetMapping("/queryAll")
+    public List<Book> queryAll(Book book){
+        List<Book> books = bookMapper1.queryAll(book);
+        return books;
+    }
+
     @GetMapping("/queryAllByDstwo")
     public List<Book> queryBookByDstwo(){
         List<Book> books = bookMapper2.queryAll(new Book());
+        return books;
+    }
+
+    @GetMapping("/batchInsert")
+    public int batchInsert(){
+        List<Book> books = new ArrayList<>();
+        books.add(new Book("传习录","王阳明"));
+        books.add(new Book("千年金融史", "威廉-戈兹曼"));
+
+        int result = bookMapper1.batchInsert(books);
+
+        return result;
+    }
+
+    @GetMapping("/queryByIds")
+    public List<Book> queryByIds(String ids){
+        String[] idArr = ids.split(",");
+        List<Book> books = bookMapper1.queryByIds(idArr);
+        return books;
+    }
+
+    @GetMapping("/queryByMap")
+    public List<Book> queryByMap(){
+        Map<String,String> map = new HashMap<>();
+        map.put("1","1");
+        map.put("3", "3");
+
+        List<Book> books = bookMapper1.queryByMap(map);
         return books;
     }
 
