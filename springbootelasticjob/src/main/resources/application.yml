@@ -1,0 +1,34 @@
+
+
+
+elasticjob:
+  regCenter:
+    serverLists: localhost:2181
+    namespace: elasticjob-lite-springboot
+  jobs:
+#    dataflowJob:
+#      elasticJobClass: com.allen.springbootelasticjob.config.SpringBootDataflowJob
+#      cron: 0/5 * * * * ?
+#      shardingTotalCount: 3
+#      shardingItemParamters: 0=Beijing,1=Shanghai,2=Guangzhou
+    simpleJob:
+      elasticJobClass: com.allen.springbootelasticjob.javaapi.MyElasticJob
+      cron: 0/5 * * * * ?
+      shardingTotalCount: 3
+      shardingItemParamters: 0=Beijing,1=Shanghai,2=广州
+      job-sharding-strategy-type: RotateServerByNameJobShardingStrategy
+
+  tracing:
+    type: RDB
+
+
+spring:
+  datasource:
+    url: jdbc:mysql://192.168.181.140:3306/sakila?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: root
+
+
+server:
+  port: 8081
