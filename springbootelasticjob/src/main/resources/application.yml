@@ -5,6 +5,8 @@ elasticjob:
   regCenter:
     serverLists: localhost:2181
     namespace: elasticjob-lite-springboot
+
+
   jobs:
 #    dataflowJob:
 #      elasticJobClass: com.allen.springbootelasticjob.config.SpringBootDataflowJob
@@ -17,6 +19,9 @@ elasticjob:
       shardingTotalCount: 3
       shardingItemParamters: 0=Beijing,1=Shanghai,2=广州
       job-sharding-strategy-type: RotateServerByNameJobShardingStrategy
+      listener:
+        listenerClass:
+
 
   tracing:
     type: RDB

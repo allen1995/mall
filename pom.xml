@@ -18,6 +18,7 @@
 		<module>springbootjdbctemplate</module>
         <module>springbootmybatis</module>
 		<module>springbootjpa</module>
+		<module>springbootsecurity</module>
 	</modules>
 
 	<properties>
