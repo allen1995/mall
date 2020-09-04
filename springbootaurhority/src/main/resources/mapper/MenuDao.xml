@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.allen.springbootaurhority.dao.MenuDao">
+
+    <resultMap id="BaseResultMap" type="com.allen.springbootaurhority.entity.Menu">
+        <!--@Table menu-->
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="pattern" column="pattern" jdbcType="VARCHAR"/>
+        <collection property="roles" ofType="com.allen.springbootaurhority.entity.Role">
+            <id property="id" column="rid"/>
+            <result property="name" column="rname" />
+            <result property="nameZh" column="rnameZh" />
+        </collection>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          id, pattern, createtime, updatetime
+        from sakila.menu
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          id, pattern, createtime, updatetime
+        from sakila.menu
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          m.*, r.id as rid, r.name as rname, r.nameZh as rnameZh from menu m
+          left join menu_role mr on m.id = mr.mid
+          left join role r on mr.rid = r.id
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="pattern != null and pattern != ''">
+                and pattern = #{pattern}
+            </if>
+            <if test="createtime != null">
+                and createtime = #{createtime}
+            </if>
+            <if test="updatetime != null">
+                and updatetime = #{updatetime}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into sakila.menu(pattern, createtime, updatetime)
+        values (#{pattern}, #{createtime}, #{updatetime})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update sakila.menu
+        <set>
+            <if test="pattern != null and pattern != ''">
+                pattern = #{pattern},
+            </if>
+            <if test="createtime != null">
+                createtime = #{createtime},
+            </if>
+            <if test="updatetime != null">
+                updatetime = #{updatetime},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from sakila.menu where id = #{id}
+    </delete>
+
+</mapper>
