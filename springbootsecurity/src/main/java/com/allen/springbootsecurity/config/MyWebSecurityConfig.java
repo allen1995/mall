@@ -36,9 +36,9 @@ public class MyWebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-                .withUser("root").password("$2a$10$noVsPp6ngP8EPbpBtijWLu5ck/teVcqz329kNVFqLs1oq8eroddpy").roles("ADMIN","DBA")
+                .withUser("root").password("$2a$10$noVsPp6ngP8EPbpBtijWLu5ck/teVcqz329kNVFqLs1oq8eroddpy").roles("ADMIN", "DBA")
                 .and()
-                .withUser("admin").password("$2a$10$noVsPp6ngP8EPbpBtijWLu5ck/teVcqz329kNVFqLs1oq8eroddpy").roles("ADMIN","USER")
+                .withUser("admin").password("$2a$10$noVsPp6ngP8EPbpBtijWLu5ck/teVcqz329kNVFqLs1oq8eroddpy").roles("ADMIN", "USER")
                 .and()
                 .withUser("allen").password("$2a$10$noVsPp6ngP8EPbpBtijWLu5ck/teVcqz329kNVFqLs1oq8eroddpy").roles("USER");
 
@@ -65,14 +65,14 @@ public class MyWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .successHandler(new AuthenticationSuccessHandler() {
                     @Override
                     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest,
-                            HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
+                                                        HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
                         Object principal = authentication.getPrincipal();
                         httpServletResponse.setContentType("application/json;charset=utf-8");
 
                         PrintWriter writer = httpServletResponse.getWriter();
                         httpServletResponse.setStatus(200);
 
-                        Map<String,Object> map = new HashMap<>();
+                        Map<String, Object> map = new HashMap<>();
                         map.put("status", 200);
                         map.put("msg", principal);
 
@@ -86,23 +86,23 @@ public class MyWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureHandler(new AuthenticationFailureHandler() {
                     @Override
                     public void onAuthenticationFailure(HttpServletRequest req,
-                                HttpServletResponse resp, AuthenticationException e) throws IOException, ServletException {
+                                                        HttpServletResponse resp, AuthenticationException e) throws IOException, ServletException {
                         PrintWriter out = resp.getWriter();
 
                         resp.setContentType("application/json;charset=utf-8");
                         resp.setStatus(401);
 
-                        Map<String,Object> map = new HashMap<>();
+                        Map<String, Object> map = new HashMap<>();
                         map.put("status", 401);
-                        if( e instanceof LockedException ){
+                        if (e instanceof LockedException) {
                             map.put("msg", "账户已被锁定,登陆失败！");
-                        } else if( e instanceof BadCredentialsException ){
+                        } else if (e instanceof BadCredentialsException) {
                             map.put("msg", "用户名或者密码错误，登陆失败！");
-                        } else if( e instanceof DisabledException ){
+                        } else if (e instanceof DisabledException) {
                             map.put("msg", "账户被禁用，登陆失败！");
-                        } else if( e instanceof AccountExpiredException ){
+                        } else if (e instanceof AccountExpiredException) {
                             map.put("msg", "账户已过期， 登陆失败！");
-                        } else if( e instanceof CredentialsExpiredException ){
+                        } else if (e instanceof CredentialsExpiredException) {
                             map.put("msg", "密码已过期，登陆失败！");
 
                         } else {
@@ -128,29 +128,29 @@ public class MyWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
                     }
                 })
-                .logoutSuccessHandler( new LogoutSuccessHandler() {
-                        @Override
-                        public void onLogoutSuccess(HttpServletRequest httpServletRequest,
-                            HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
-                            httpServletResponse.sendRedirect("/login");
-                        }
-                    }
+                .logoutSuccessHandler(new LogoutSuccessHandler() {
+                                          @Override
+                                          public void onLogoutSuccess(HttpServletRequest httpServletRequest,
+                                                                      HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
+                                              httpServletResponse.sendRedirect("/login");
+                                          }
+                                      }
                 );
 
 
-                //使用默认的登陆页面
-                //.and()
-                //.formLogin()
-                //.loginProcessingUrl("/login")
-                //.permitAll()
-                //.and()
-                //.csrf()
-                //.disable();
+        //使用默认的登陆页面
+        //.and()
+        //.formLogin()
+        //.loginProcessingUrl("/login")
+        //.permitAll()
+        //.and()
+        //.csrf()
+        //.disable();
 
     }
 
     @Bean
-    public PasswordEncoder encoder(){
+    public PasswordEncoder encoder() {
         return new BCryptPasswordEncoder();
     }
 

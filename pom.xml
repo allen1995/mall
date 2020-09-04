@@ -19,6 +19,7 @@
         <module>springbootmybatis</module>
 		<module>springbootjpa</module>
 		<module>springbootsecurity</module>
+		<module>springbootaurhority</module>
 	</modules>
 
 	<properties>
