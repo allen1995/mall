@@ -20,6 +20,7 @@
 		<module>springbootjpa</module>
 		<module>springbootsecurity</module>
 		<module>springbootaurhority</module>
+		<module>springbootwebsocket</module>
 	</modules>
 
 	<properties>
