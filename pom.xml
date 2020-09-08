@@ -21,6 +21,7 @@
 		<module>springbootsecurity</module>
 		<module>springbootaurhority</module>
 		<module>springbootwebsocket</module>
+		<module>springbootenterprisedevelopment</module>
 	</modules>
 
 	<properties>

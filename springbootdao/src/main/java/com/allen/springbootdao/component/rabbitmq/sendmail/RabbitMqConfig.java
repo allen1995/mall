@@ -40,8 +40,8 @@ public class RabbitMqConfig {
     public RabbitTemplate rabbitTemplate(CachingConnectionFactory factory){
 
         RabbitTemplate template = new RabbitTemplate(factory);
-        //template.setExchange("mailExchange");
-        //template.setRoutingKey("mail.test");
+        //templates.setExchange("mailExchange");
+        //templates.setRoutingKey("mail.test");
         template.setMessageConverter(jsonMessageConverter());
         return template;
 
