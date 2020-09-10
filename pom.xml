@@ -22,6 +22,8 @@
 		<module>springbootaurhority</module>
 		<module>springbootwebsocket</module>
 		<module>springbootenterprisedevelopment</module>
+		<module>springbootelasticjob</module>
+		<module>springbootshiro</module>
 	</modules>
 
 	<properties>

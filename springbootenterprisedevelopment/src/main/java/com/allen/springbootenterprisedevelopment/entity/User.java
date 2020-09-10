@@ -2,6 +2,7 @@ package com.allen.springbootenterprisedevelopment.entity;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.lang.NonNull;
 
 import javax.validation.constraints.NotNull;
@@ -18,7 +19,7 @@ public class User {
     private Integer id;
 
     @ApiModelProperty(value = "用户名")
-    @Size(min = 5, max = 10, message = "{user.name.size}")
+    @Size(min = 5, max = 10)
     private String username;
     @ApiModelProperty(value = "地址")
     @NotNull(message = "{user.address.notnull}")

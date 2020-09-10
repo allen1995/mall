@@ -4,6 +4,7 @@ import com.allen.springbootenterprisedevelopment.entity.User;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
@@ -52,7 +53,7 @@ public class UserController {
 
     @ApiOperation(value = "修改用户", notes = "修改用户，传入用户信息")
     @PutMapping("/user")
-    public String updateUser(@RequestBody @Validated User user, BindingResult result) throws JsonProcessingException {
+    public String updateUser(@Validated User user, BindingResult result) throws JsonProcessingException {
         List<String> errors = new ArrayList<>();
         if( result.hasErrors() ){
             List<ObjectError> allErrors = result.getAllErrors();
