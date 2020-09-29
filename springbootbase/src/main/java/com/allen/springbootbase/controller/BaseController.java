@@ -1,5 +1,6 @@
 package com.allen.springbootbase.controller;
 
+import com.allen.springbootbase.component.Limiter;
 import com.allen.springbootbase.module.dto.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,7 @@ public class BaseController {
     @Autowired
     private User user;
 
+    @Limiter
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String index(){
         return "hello,https";

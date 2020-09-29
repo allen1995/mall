@@ -9,10 +9,10 @@ server:
   tomcat:
     uri-encoding: UTF-8
     max-threads: 500
-  ssl:
-    key-store: allen.p12
-    key-alias: tomcathttps
-    key-store-password: 123456
+#  ssl:
+#    key-store: allen.p12
+#    key-alias: tomcathttps
+#    key-store-password: 123456
 
 
 my:
