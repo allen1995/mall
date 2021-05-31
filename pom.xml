@@ -4,6 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.allen</groupId>
 	<artifactId>mall</artifactId>
+	<packaging>pom</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>mall</name>
 	<description>springboot demo练习</description>
@@ -24,6 +25,7 @@
 		<module>springbootenterprisedevelopment</module>
 		<module>springbootelasticjob</module>
 		<module>springbootshiro</module>
+		<module>malldemo</module>
 	</modules>
 
 	<properties>
