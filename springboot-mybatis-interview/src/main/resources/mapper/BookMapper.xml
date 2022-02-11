@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.allen.springbootmybatisinterview.mapper.BookMapper">
+    <resultMap id="BaseResultMap" type="com.allen.springbootmybatisinterview.entity.Book">
+        <result column="id" jdbcType="INTEGER" property="id" ></result>
+        <result column="name" jdbcType="VARCHAR" property="name"></result>
+        <result column="author" jdbcType="VARCHAR" property="author" ></result>
+    </resultMap>
+    
+    <select id="queryAllBook" resultMap="BaseResultMap" >
+        select * from book
+    </select>
+
+    <select id="pageAllBook" resultMap="BaseResultMap" >
+        select * from book
+    </select>
+
+    <select id="queryByName" parameterType="string" resultMap="BaseResultMap" >
+        select * from book where name like "%"#{name}"%"
+    </select>
+
+
+    <select id="queryTestIf" parameterType="map" resultMap="BaseResultMap">
+        select * from book where 1=1
+        <if test="name != null">
+          and name like "%"#{name}"%"
+        </if>
+    </select>
+
+    <update id="update">
+        update book set
+        <trim suffixOverrides=",">
+            <if test="name != null">name = #{name},</if>
+            <if test="author != null">author = #{author},</if>
+        </trim>
+
+        where id=1
+    </update>
+
+    <!--<insert id="insert" >-->
+        <!--insert into book values()-->
+    <!--</insert>-->
+</mapper>

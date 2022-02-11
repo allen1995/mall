@@ -26,6 +26,8 @@
 		<module>springbootelasticjob</module>
 		<module>springbootshiro</module>
 		<module>malldemo</module>
+		<module>springboot-mybatis-interview</module>
+		<module>zookeeper-demo</module>
 	</modules>
 
 	<properties>

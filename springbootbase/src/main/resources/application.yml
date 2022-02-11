@@ -3,7 +3,7 @@ server:
   error:
     path: /error
   servlet:
-    context-path: /chapter02
+#    context-path: /chapter02
     session:
       timeout: 30m
   tomcat:
